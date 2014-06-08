@@ -1,18 +1,8 @@
-/** User statistics script **/
-DomReady.ready(function() {
-    var dataReferrer = top.document.referrer;
+function getCookie(name) {
+    var matches = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+}
 
-    var dataUrl = top.document.URL;
-    if (typeof window.zestat_user_id == 'undefined') {
-        zestat_user_id = '';
-    }
-
-    var date = new Date();
-    var scriptName = 'http://statra.ru/t/?url=' + encodeURIComponent(dataUrl) + '&referer=' + encodeURIComponent(dataReferrer) + '&user_date=' + date;
-    loadScript(scriptName, function () {});
-});
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function loadScript(url, callback)
 {
@@ -178,3 +168,18 @@ function loadScript(url, callback)
 
 })();
 
+
+/** User statistics script **/
+DomReady.ready(function() {
+    var dataReferrer = top.document.referrer;
+
+    var dataUrl = top.document.URL;
+    if (typeof window.zestat_user_id == 'undefined') {
+        zestat_user_id = '';
+    }
+
+    var statra = getCookie('statra');
+    var date = new Date();
+    var scriptName = 'http://statra.dev/t/?url=' + encodeURIComponent(dataUrl) + '&referer=' + encodeURIComponent(dataReferrer) + '&user_date=' + date + '&statra=' + statra;
+    loadScript(scriptName, function () {return;});
+});
