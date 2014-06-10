@@ -180,6 +180,6 @@ DomReady.ready(function() {
 
     var statra = getCookie('statra');
     var date = new Date();
-    var scriptName = 'http://statra.dev/t/?url=' + encodeURIComponent(dataUrl) + '&referer=' + encodeURIComponent(dataReferrer) + '&user_date=' + date + '&statra=' + statra;
+    var scriptName = 'http://statra.ru/t/?url=' + encodeURIComponent(dataUrl) + '&referer=' + encodeURIComponent(dataReferrer) + '&user_date=' + date + '&statra=' + statra;
     loadScript(scriptName, function () {return;});
 });
